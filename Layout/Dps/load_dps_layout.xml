@@ -1,0 +1,24 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/">
+	<Script file="actionbars.lua"/>
+	<Script file="auras.lua"/>
+	<Script file="bags.lua"/>
+	<Script file="chat.lua"/>
+	<Script file="databars.lua"/>
+	<Script file="datatexts.lua"/>
+	<Script file="general.lua"/>
+	<Script file="movers.lua"/>
+	<Script file="private.lua"/>
+	<Script file="tooltip.lua"/>
+	<Script file="Units\arena.lua"/>
+	<Script file="Units\assist.lua"/>
+	<Script file="Units\boss.lua"/>
+	<Script file="Units\focus.lua"/>
+	<Script file="Units\general.lua"/>
+	<Script file="Units\party.lua"/>
+	<Script file="Units\pet.lua"/>
+	<Script file="Units\player.lua"/>
+	<Script file="Units\raid.lua"/>
+	<Script file="Units\tank.lua"/>
+	<Script file="Units\target.lua"/>
+	<Script file="Units\targettarget.lua"/>
+</Ui>

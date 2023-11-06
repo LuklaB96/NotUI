@@ -1,0 +1,19 @@
+## Interface: 80300
+## Author: N0thing
+## Version: 1.0
+## Title: |cff4beb2cNotUI Layout|r
+## Notes: Contains settings and layout for NotUI
+## RequiredDeps: ElvUI
+## DefaultState: enabled
+## X-Tukui-ProjectID: 254
+## X-Tukui-ProjectFolders: ElvUI_NotUI
+
+Core\Init.lua
+Core\Core.lua
+Media\load_media.xml
+Layout\Addons\load_addons.xml
+Layout\Dps\load_dps_layout.xml
+Layout\Tank\load_tank_layout.xml
+Layout\Healer\load_healer_layout.xml
+
+
