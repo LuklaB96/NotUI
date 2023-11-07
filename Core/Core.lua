@@ -60,7 +60,25 @@
 				}
 		StaticPopup_Show("OmniCD2")
 	end
-	
+	function NUI:AuraIndicators()
+		StaticPopupDialogs["AuraIndicators"] = {
+					text = "Aura Indicators for party frames:",
+					button1 = "Ok",
+					OnShow = function (self, data)
+						self.editBox:SetText("https://wago.io/e6yBOEOvO")
+						self.editBox:HighlightText()
+					end,
+					OnAccept = function (self, data, data2)
+						local text = self.editBox:GetText()
+					end,
+					hasEditBox = true,
+					timeout = 0,
+					whileDead = true,
+					hideOnEscape = true,
+					preferredIndex = 3,
+				}
+		StaticPopup_Show("AuraIndicators")
+	end
 	function NUI:ClassPack()
 		StaticPopupDialogs["ClassPack"] = {
 					text = "Class Pack / Other auras:",
