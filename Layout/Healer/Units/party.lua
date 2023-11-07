@@ -16,6 +16,7 @@ end
 E.db["unitframe"]["units"]["party"]["ROLE1"] = "HEALER"
 E.db["unitframe"]["units"]["party"]["ROLE2"] = "TANK"
 E.db["unitframe"]["units"]["party"]["buffIndicator"]["size"] = 16
+E.db["unitframe"]["units"]["party"]["buffIndicator"]["enable"] = false
 E.db["unitframe"]["units"]["party"]["buffs"]["anchorPoint"] = "TOPRIGHT"
 E.db["unitframe"]["units"]["party"]["buffs"]["attachTo"] = "HEALTH"
 E.db["unitframe"]["units"]["party"]["buffs"]["countFont"] = "NotUI Font light"
