@@ -2,4 +2,5 @@
 	<Script file="OmniCD.lua"/>
 	<Script file="WarpDeplete.lua"/>
 	<Script file="BigWigs.lua"/>
+	<Script file="Plater.lua"/>
 </Ui>

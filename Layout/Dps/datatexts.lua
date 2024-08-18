@@ -11,22 +11,27 @@ function NUI:DPSDatatexts()
 	E.db["datatexts"]["panels"]["LeftChatDataPanel"]["enable"] = false
 	E.db["datatexts"]["panels"]["RightChatDataPanel"]["enable"] = false
 	E.db["datatexts"]["panels"]["MinimapPanel"]["enable"] = false
-	if not E.global["datatexts"]["customPanels"]["Middle bar"] then
-		DT:BuildPanelFrame("Middle bar")
-		E.global["datatexts"]["customPanels"]["Middle bar"]["fonts"]["enable"] = true
-		E.global["datatexts"]["customPanels"]["Middle bar"]["fonts"]["font"] = "NotUI Font light"
-		E.global["datatexts"]["customPanels"]["Middle bar"]["fonts"]["fontSize"] = 13
-		E.global["datatexts"]["customPanels"]["Middle bar"]["name"] = "Middle bar"
-		E.global["datatexts"]["customPanels"]["Middle bar"]["numPoints"] = 5
-		E.global["datatexts"]["customPanels"]["Middle bar"]["visibility"] = "show"
-		E.global["datatexts"]["customPanels"]["Middle bar"]["width"] = 706
+	if not E.global["datatexts"]["customPanels"]["NUI_CUSTOM_MIDDLE_BAR"] then
+		DT:BuildPanelFrame("NUI_CUSTOM_MIDDLE_BAR")
+		E.global["datatexts"]["customPanels"]["NUI_CUSTOM_MIDDLE_BAR"]["fonts"]["enable"] = true
+		E.global["datatexts"]["customPanels"]["NUI_CUSTOM_MIDDLE_BAR"]["fonts"]["font"] = "NotUI Font light"
+		E.global["datatexts"]["customPanels"]["NUI_CUSTOM_MIDDLE_BAR"]["fonts"]["fontSize"] = 13
+		E.global["datatexts"]["customPanels"]["NUI_CUSTOM_MIDDLE_BAR"]["name"] = "NUI_CUSTOM_MIDDLE_BAR"
+		E.global["datatexts"]["customPanels"]["NUI_CUSTOM_MIDDLE_BAR"]["numPoints"] = 5
+		E.global["datatexts"]["customPanels"]["NUI_CUSTOM_MIDDLE_BAR"]["visibility"] = "show"
+		E.global["datatexts"]["settings"]["Currencies"]["displayedCurrency"] = "GOLD"
+		E.global["general"]["commandBarSetting"] = "DISABLED"
+		E.global["general"]["fadeMapWhenMoving"] = false
+		E.global["sle"]["advanced"]["optionsLimits"] = true
+		E.global.datatexts.customPanels.NUI_CUSTOM_MIDDLE_BAR.width = 1071
 	end
-	if E.db["datatexts"]["panels"]["Middle bar"] then
-		E.db["datatexts"]["panels"]["Middle bar"]["enable"] = true
-		E.db["datatexts"]["panels"]["Middle bar"][1] = "System"
-		E.db["datatexts"]["panels"]["Middle bar"][2] = "Durability"
-		E.db["datatexts"]["panels"]["Middle bar"][3] = "Gold"
-		E.db["datatexts"]["panels"]["Middle bar"][4] = "Guild"
-		E.db["datatexts"]["panels"]["Middle bar"][5] = "Talent/Loot Specialization"
+	if E.db["datatexts"]["panels"]["NUI_CUSTOM_MIDDLE_BAR"] then
+		E.db["datatexts"]["panels"]["NUI_CUSTOM_MIDDLE_BAR"]["enable"] = true
+		E.db["datatexts"]["panels"]["NUI_CUSTOM_MIDDLE_BAR"][1] = "System"
+		E.db["datatexts"]["panels"]["NUI_CUSTOM_MIDDLE_BAR"][2] = "Durability"
+		E.db["datatexts"]["panels"]["NUI_CUSTOM_MIDDLE_BAR"][3] = "Gold"
+		E.db["datatexts"]["panels"]["NUI_CUSTOM_MIDDLE_BAR"][4] = "Guild"
+		E.db["datatexts"]["panels"]["NUI_CUSTOM_MIDDLE_BAR"][5] = "Talent/Loot Specialization"
 	end
+	
 end

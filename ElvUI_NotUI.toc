@@ -1,6 +1,6 @@
 ## Interface: 80300
 ## Author: N0thing
-## Version: 1.01
+## Version: 11.01
 ## Title: |cff4beb2cNotUI Layout|r
 ## Notes: Contains settings and layout for NotUI
 ## RequiredDeps: ElvUI

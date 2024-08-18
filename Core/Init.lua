@@ -6,7 +6,7 @@ local format = string.format
 local GetCVarBool = GetCVarBool
 local ReloadUI = ReloadUI
 local StopMusic = StopMusic
-
+local GetAddOnMetadata = C_AddOns.GetAddOnMetadata
 
 
 --Libs references
@@ -15,7 +15,7 @@ local EP = LibStub("LibElvUIPlugin-1.0")
 --Create main NotUI module for ElvUI to handle
 local NUI = E:NewModule(MyPluginName, "AceConsole-3.0", "AceHook-3.0", "AceEvent-3.0", "AceTimer-3.0");
 
-NUI.SupportedElvUIVersion = 13.40
+NUI.SupportedElvUIVersion = 13.73
 NUI.Version = GetAddOnMetadata(addon, "Version")
 
 
@@ -43,8 +43,16 @@ local function SetPlayerBarsVisisble(visibility)
 	E.db["actionbar"]["bar3"]["mouseover"] = visibility
 	E.db["actionbar"]["bar4"]["mouseover"] = visibility
 	E.db["actionbar"]["bar5"]["mouseover"] = visibility
+	E.db["actionbar"]["bar6"]["mouseover"] = visibility
+end
+
+local function SetPlayerCastBarVisible(visibility)
+	E.db["unitframe"]["units"]["player"]["castbar"]["enable"] = visibility
 end
 local function DpsLayout()
+	--Setup UI Scale
+	E.global.general.UIScale = 0.63
+	
 	--General Setup
 	NUI:DPSActionBars()
 	NUI:DPSAuras()
@@ -73,6 +81,9 @@ local function DpsLayout()
 end
 
 local function TankLayout()
+	--Setup UI Scale
+	E.global.general.UIScale = 0.63
+	
 	--General Setup
 	NUI:TANKActionBars()
 	NUI:TANKAuras()
@@ -101,6 +112,9 @@ local function TankLayout()
 end
 
 local function HealerLayout()
+	--Setup UI Scale
+	E.global.general.UIScale = 0.63
+	
 	--General Setup
 	NUI:HEALActionBars()
 	NUI:HEALAuras()
@@ -144,6 +158,10 @@ local function SetupLayout(layout)
 		SetPlayerBarsVisisble(false)
 	elseif layout == "BarsNotVisible" then
 		SetPlayerBarsVisisble(true)
+	elseif layout == "CastBarVisible" then
+		SetPlayerCastBarVisible(true)
+	elseif layout == "CastBarNotVisible" then
+		SetPlayerCastBarVisible(false)
 	end
 	E:UpdateAll(true)
 	--Show message about layout being set
@@ -179,18 +197,9 @@ local InstallerData = {
 			PluginInstallFrame.SubTitle:SetText("Layouts")
 			PluginInstallFrame.Desc1:SetText("These are the layouts that are available. Please click a button below to apply the layout of your choosing. If anything on screen appears to not be in correct place, don't worry - it should be fine after installation is completed! |cff39ed4eRemember|cffffffff to grab Party Frame buff indicators to see everything properly!")
 			PluginInstallFrame.Desc2:SetText("Importance: |cff07D400High|r")
-			PluginInstallFrame.Option1:Show()
-			PluginInstallFrame.Option1:SetScript("OnClick", function() NUI:AuraIndicators() end)
-			PluginInstallFrame.Option1:SetText("Party Buffs")
-			PluginInstallFrame.Option2:Show()
-			PluginInstallFrame.Option2:SetScript("OnClick", function() SetupLayout("tank") end)
-			PluginInstallFrame.Option2:SetText("TANK")
-			PluginInstallFrame.Option3:Show()
-			PluginInstallFrame.Option3:SetScript("OnClick", function() SetupLayout("healer") end)
-			PluginInstallFrame.Option3:SetText("HEALER")
-		    PluginInstallFrame.Option4:Show()
-			PluginInstallFrame.Option4:SetScript("OnClick", function() SetupLayout("dps") end)
-			PluginInstallFrame.Option4:SetText("DPS")
+		    PluginInstallFrame.Option1:Show()
+			PluginInstallFrame.Option1:SetScript("OnClick", function() SetupLayout("dps") end)
+			PluginInstallFrame.Option1:SetText("DPS/TANK")
 		end,
 		[3] = function()
 			PluginInstallFrame.SubTitle:SetText("Player Bars Visibility")
@@ -203,93 +212,71 @@ local InstallerData = {
 			PluginInstallFrame.Option2:SetText("No")
 		end,
 		[4] = function()
-			PluginInstallFrame.SubTitle:SetText("OmniCD Profile")
-			PluginInstallFrame.Desc1:SetText("After clicking \"Load OmniCD\" button all your previous OmniCD data will be wiped and replaced with my profile settings. If you wish to import it by yourself just use other options below.")
-			PluginInstallFrame.Desc2:SetText("After proper UI installation type /omnicd in chat and choose your profiles!")
+			PluginInstallFrame.SubTitle:SetText("Cast bar")
+			PluginInstallFrame.Desc1:SetText("Do you want to use ElvUI cast bar? Disable it if you have custom cast bar weakaura etc.")
 			PluginInstallFrame.Option1:Show()
-			PluginInstallFrame.Option1:SetScript("OnClick", function() NUI:LoadOmniCDProfiles() end)
-			PluginInstallFrame.Option1:SetText("LOAD OMNICD")
+			PluginInstallFrame.Option1:SetScript("OnClick", function() SetupLayout("CastBarVisible") end)
+			PluginInstallFrame.Option1:SetText("Enable")
 			PluginInstallFrame.Option2:Show()
-			PluginInstallFrame.Option2:SetScript("OnClick", function() NUI:OmniCDTankDps() end)
-			PluginInstallFrame.Option2:SetText("DPS AND TANK")
-			PluginInstallFrame.Option3:Show()
-			PluginInstallFrame.Option3:SetScript("OnClick", function() NUI:OmniCDHealer() end)
-			PluginInstallFrame.Option3:SetText("HEALER")
+			PluginInstallFrame.Option2:SetScript("OnClick", function() SetupLayout("CastBarNotVisible") end)
+			PluginInstallFrame.Option2:SetText("Disable")
 		end,
 		[5] = function()
+			PluginInstallFrame.SubTitle:SetText("OmniCD Profile")
+			PluginInstallFrame.Desc1:SetText("Load OmniCD profile called NUI_DPSTANK")
+			PluginInstallFrame.Desc2:SetText("After proper UI installation type /omnicd in chat and choose your profile!")
+			PluginInstallFrame.Option1:Show()
+			PluginInstallFrame.Option1:SetScript("OnClick", function() NUI:LoadOmniCDProfile() end)
+			PluginInstallFrame.Option1:SetText("Load OmniCD")
+		end,
+		[6] = function()
 			PluginInstallFrame.SubTitle:SetText("BigWigs/LittleWigs Profile")
 			PluginInstallFrame.Desc1:SetText("After clicking \"Load BigWigs\" button all your previous BigWigs data will be wiped and replaced with my profile settings. If you accidentaly overwrite something important then ALT+F4 is your best friend.")
 			PluginInstallFrame.Option1:Show()
 			PluginInstallFrame.Option1:SetScript("OnClick", function() NUI:LoadBigWigsProfile() end)
 			PluginInstallFrame.Option1:SetText("LOAD BIGWIGS")
 		end,
-		[6] = function()
-			PluginInstallFrame.SubTitle:SetText("WarpDeplete Profile")
-			PluginInstallFrame.Desc1:SetText("After clicking \"Load WarpDeplete\" button all your previous WarpDeplete data will be wiped and replaced with my profile settings. If you accidentaly overwrite something important then ALT+F4 is your best friend.")
-			PluginInstallFrame.Option1:Show()
-			PluginInstallFrame.Option1:SetScript("OnClick", function() NUI:LoadWarpDepleteProfile() end)
-			PluginInstallFrame.Option1:SetText("LOAD WARPDEPLETE")
-		end,
 		[7] = function()
-			PluginInstallFrame.SubTitle:SetText("Dungeon Pack Installation")
-			PluginInstallFrame.Desc1:SetText("Go to generated url after You click on \"Get Dungeon Pack!\" button. It will always be up to date here!")
-			PluginInstallFrame.Option1:Show()
-			PluginInstallFrame.Option1:SetScript("OnClick", function() NUI:DungeonPack() end)
-			PluginInstallFrame.Option1:SetText("Get Dungeon Pack!")
-		end,
-		[8] = function()
-			PluginInstallFrame.SubTitle:SetText("Class Pack Installation")
-			PluginInstallFrame.Desc1:SetText("Go to generated url after You click on \"Get Class Pack!\" button. It will always be up to date here!")
-			PluginInstallFrame.Option1:Show()
-			PluginInstallFrame.Option1:SetScript("OnClick", function() NUI:ClassPack() end)
-			PluginInstallFrame.Option1:SetText("Get Class Pack!")
-		end,
-		[9] = function()
 			PluginInstallFrame.SubTitle:SetText("Details! profile installation")
 			PluginInstallFrame.Desc1:SetText("This button should install Details Porifle automatically, if not - import it manually.")
 			PluginInstallFrame.Option1:Show()
 			PluginInstallFrame.Option1:SetScript("OnClick", function() NUI:DetailsImport() end)
-			PluginInstallFrame.Option1:SetText("LOAD DETAILS")
+			PluginInstallFrame.Option1:SetText("IMPORT DETAILS")
 		end,
-		[10] = function()
+		[8] = function()
 			PluginInstallFrame.SubTitle:SetText("Plater profile installation")
 			PluginInstallFrame.Desc1:SetText("Go to generated url after You click on \"Get Plater!\" button. It will always be up to date here!")
 			PluginInstallFrame.Option1:Show()
-			PluginInstallFrame.Option1:SetScript("OnClick", function() NUI:PlaterImportString() end)
-			PluginInstallFrame.Option1:SetText("Get Plater!")
+			PluginInstallFrame.Option1:SetScript("OnClick", function() NUI:ImportPlater() end)
+			PluginInstallFrame.Option1:SetText("IMPORT")
 		end,
-		[11] = function()
+		[9] = function()
 			PluginInstallFrame.SubTitle:SetText("Discord Support")
 			PluginInstallFrame.Desc1:SetText("If you need help or want to make my UI better just join my discord server!")
 			PluginInstallFrame.Option1:Show()
 			PluginInstallFrame.Option1:SetScript("OnClick", function() NUI:DiscordLink() end)
 			PluginInstallFrame.Option1:SetText("DISCORD")
 		end,
-		[12] = function()
+		[10] = function()
 			PluginInstallFrame.SubTitle:SetText("Installation Complete")
 			PluginInstallFrame.Desc1:SetText("You have completed the installation process.")
 			PluginInstallFrame.Desc2:SetText("Please click the button below in order to finalize the process and automatically reload your UI.")
 			PluginInstallFrame.Option1:Show()
-			PluginInstallFrame.Option1:SetScript("OnClick", function() NUI:DiscordLink() end)
-			PluginInstallFrame.Option1:SetText("DISCORD")
-			PluginInstallFrame.Option2:Show()
-			PluginInstallFrame.Option2:SetScript("OnClick", InstallComplete)
-			PluginInstallFrame.Option2:SetText("Finished")
+			PluginInstallFrame.Option1:SetScript("OnClick", InstallComplete)
+			PluginInstallFrame.Option1:SetText("Finish - Reload UI")
 		end,
 	},
 	StepTitles = {
 		[1] = "Welcome",
 		[2] = "Layouts",
 		[3] = "Player Bars Visibility",
-		[4] = "OmniCD Profile",
-		[5] = "BigWigs Profile",
-		[6] = "WarpDeplete Profile",
-		[7] = "WeakAuras Dungeon Pack",
-		[8] = "WeakAuras Class Pack",
-		[9] = "Details! Installation",
-		[10] = "Plater Installation",
-		[11] = "Discord Support",
-		[12] = "Installation Complete",
+		[4] = "Cast Bar",
+		[5] = "OmniCD Profile",
+		[6] = "BigWigs Profile",
+		[7] = "Details! Installation",
+		[8] = "Plater Installation",
+		[9] = "Discord Support",
+		[10] = "Installation Complete",
 	},
 	StepTitlesColor = {1, 1, 1},
 	StepTitlesColorSelected = {0, 179/255, 1},
@@ -356,6 +343,7 @@ end
 
 function NUI:SetupCommand()
 	self:RegisterChatCommand("nui", "ShowInstallationGUI")
+	self:RegisterChatCommand("notui", "ShowInstallationGUI")
 end
 
 function NUI:Print(text)

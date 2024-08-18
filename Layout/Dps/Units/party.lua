@@ -5,35 +5,8 @@ local NUI = E:GetModule("NotUI")
 function NUI:DPSPartyUnit()
 	E.db["unitframe"]["units"]["party"]["ROLE1"] = "HEALER"
 	E.db["unitframe"]["units"]["party"]["ROLE2"] = "TANK"
-	E.db["unitframe"]["units"]["party"]["buffIndicator"]["size"] = 16
-	E.db["unitframe"]["units"]["party"]["buffs"]["anchorPoint"] = "TOPRIGHT"
-	E.db["unitframe"]["units"]["party"]["buffs"]["attachTo"] = "HEALTH"
-	E.db["unitframe"]["units"]["party"]["buffs"]["countFont"] = "NotUI Font light"
-	E.db["unitframe"]["units"]["party"]["buffs"]["countPosition"] = "BOTTOM"
-	E.db["unitframe"]["units"]["party"]["buffs"]["countYOffset"] = -5
-	E.db["unitframe"]["units"]["party"]["buffs"]["durationPosition"] = "TOPRIGHT"
-	E.db["unitframe"]["units"]["party"]["buffs"]["growthX"] = "LEFT"
-	E.db["unitframe"]["units"]["party"]["buffs"]["perrow"] = 5
-	E.db["unitframe"]["units"]["party"]["buffs"]["sizeOverride"] = 21
-	E.db["unitframe"]["units"]["party"]["buffs"]["spacing"] = 0
-	E.db["unitframe"]["units"]["party"]["buffs"]["yOffset"] = -11
-	E.db["unitframe"]["units"]["party"]["castbar"]["width"] = 117
-	E.db["unitframe"]["units"]["party"]["colorOverride"] = "FORCE_ON"
-	
-	if E.db["unitframe"]["units"]["party"]["customTexts"] == nil then -- this checks if YourCustomTextName Custom Text exists
-				E.db["unitframe"]["units"]["party"]["customTexts"] = {} -- if not, create its table
-	end
-	if E.db["unitframe"]["units"]["party"]["customTexts"]["health1"] == nil then -- this checks if YourCustomTextName Custom Text exists
-				E.db["unitframe"]["units"]["party"]["customTexts"]["health1"] = {} -- if not, create its table
-	end
-	
-	if E.db["unitframe"]["units"]["party"]["customTexts"]["name1"] == nil then -- this checks if YourCustomTextName Custom Text exists
-				E.db["unitframe"]["units"]["party"]["customTexts"]["name1"] = {} -- if not, create its table
-	end
-	E.db["unitframe"]["units"]["party"]["ROLE1"] = "HEALER"
-	E.db["unitframe"]["units"]["party"]["ROLE2"] = "TANK"
-	E.db["unitframe"]["units"]["party"]["buffIndicator"]["size"] = 16
 	E.db["unitframe"]["units"]["party"]["buffIndicator"]["enable"] = false
+	E.db["unitframe"]["units"]["party"]["buffIndicator"]["size"] = 16
 	E.db["unitframe"]["units"]["party"]["buffs"]["anchorPoint"] = "TOPRIGHT"
 	E.db["unitframe"]["units"]["party"]["buffs"]["attachTo"] = "HEALTH"
 	E.db["unitframe"]["units"]["party"]["buffs"]["countFont"] = "NotUI Font light"
@@ -47,24 +20,7 @@ function NUI:DPSPartyUnit()
 	E.db["unitframe"]["units"]["party"]["buffs"]["yOffset"] = -11
 	E.db["unitframe"]["units"]["party"]["castbar"]["width"] = 117
 	E.db["unitframe"]["units"]["party"]["colorOverride"] = "FORCE_ON"
-	E.db["unitframe"]["units"]["party"]["customTexts"]["health1"]["attachTextTo"] = "Health"
-	E.db["unitframe"]["units"]["party"]["customTexts"]["health1"]["enable"] = false
-	E.db["unitframe"]["units"]["party"]["customTexts"]["health1"]["font"] = "NotUI Font light"
-	E.db["unitframe"]["units"]["party"]["customTexts"]["health1"]["fontOutline"] = "OUTLINE"
-	E.db["unitframe"]["units"]["party"]["customTexts"]["health1"]["justifyH"] = "LEFT"
-	E.db["unitframe"]["units"]["party"]["customTexts"]["health1"]["size"] = 15
-	E.db["unitframe"]["units"]["party"]["customTexts"]["health1"]["text_format"] = "[health:current] || [health:percent]"
-	E.db["unitframe"]["units"]["party"]["customTexts"]["health1"]["xOffset"] = 0
-	E.db["unitframe"]["units"]["party"]["customTexts"]["health1"]["yOffset"] = 3
-	E.db["unitframe"]["units"]["party"]["customTexts"]["name1"]["attachTextTo"] = "Health"
-	E.db["unitframe"]["units"]["party"]["customTexts"]["name1"]["enable"] = true
-	E.db["unitframe"]["units"]["party"]["customTexts"]["name1"]["font"] = "NotUI Font light"
-	E.db["unitframe"]["units"]["party"]["customTexts"]["name1"]["fontOutline"] = "OUTLINE"
-	E.db["unitframe"]["units"]["party"]["customTexts"]["name1"]["justifyH"] = "LEFT"
-	E.db["unitframe"]["units"]["party"]["customTexts"]["name1"]["size"] = 14
-	E.db["unitframe"]["units"]["party"]["customTexts"]["name1"]["text_format"] = "[name:veryshort] [difficultycolor][smartlevel]"
-	E.db["unitframe"]["units"]["party"]["customTexts"]["name1"]["xOffset"] = 0
-	E.db["unitframe"]["units"]["party"]["customTexts"]["name1"]["yOffset"] = 15
+	E.db["unitframe"]["units"]["party"]["debuffs"]["anchorPoint"] = "LEFT"
 	E.db["unitframe"]["units"]["party"]["debuffs"]["countFont"] = "NotUI Font light"
 	E.db["unitframe"]["units"]["party"]["debuffs"]["countFontSize"] = 14
 	E.db["unitframe"]["units"]["party"]["debuffs"]["countPosition"] = "BOTTOM"
@@ -93,7 +49,35 @@ function NUI:DPSPartyUnit()
 	E.db["unitframe"]["units"]["party"]["raidicon"]["yOffset"] = -4
 	E.db["unitframe"]["units"]["party"]["rdebuffs"]["enable"] = false
 	E.db["unitframe"]["units"]["party"]["rdebuffs"]["font"] = "NotUI Font light"
-	E.db["unitframe"]["units"]["party"]["showPlayer"] = false
 	E.db["unitframe"]["units"]["party"]["verticalSpacing"] = 11
 	E.db["unitframe"]["units"]["party"]["width"] = 180
+	--custom texts
+	if E.db["unitframe"]["units"]["party"]["customTexts"] == nil then 
+				E.db["unitframe"]["units"]["party"]["customTexts"] = {} 
+	end
+	if E.db["unitframe"]["units"]["party"]["customTexts"]["health1"] == nil then 
+				E.db["unitframe"]["units"]["party"]["customTexts"]["health1"] = {} 
+	end
+	
+	if E.db["unitframe"]["units"]["party"]["customTexts"]["name1"] == nil then 
+				E.db["unitframe"]["units"]["party"]["customTexts"]["name1"] = {} 
+	end
+	E.db["unitframe"]["units"]["party"]["customTexts"]["health1"]["attachTextTo"] = "Health"
+	E.db["unitframe"]["units"]["party"]["customTexts"]["health1"]["enable"] = false
+	E.db["unitframe"]["units"]["party"]["customTexts"]["health1"]["font"] = "NotUI Font light"
+	E.db["unitframe"]["units"]["party"]["customTexts"]["health1"]["fontOutline"] = "OUTLINE"
+	E.db["unitframe"]["units"]["party"]["customTexts"]["health1"]["justifyH"] = "LEFT"
+	E.db["unitframe"]["units"]["party"]["customTexts"]["health1"]["size"] = 15
+	E.db["unitframe"]["units"]["party"]["customTexts"]["health1"]["text_format"] = "[health:current] || [health:percent]"
+	E.db["unitframe"]["units"]["party"]["customTexts"]["health1"]["xOffset"] = 0
+	E.db["unitframe"]["units"]["party"]["customTexts"]["health1"]["yOffset"] = 3
+	E.db["unitframe"]["units"]["party"]["customTexts"]["name1"]["attachTextTo"] = "Health"
+	E.db["unitframe"]["units"]["party"]["customTexts"]["name1"]["enable"] = true
+	E.db["unitframe"]["units"]["party"]["customTexts"]["name1"]["font"] = "NotUI Font light"
+	E.db["unitframe"]["units"]["party"]["customTexts"]["name1"]["fontOutline"] = "OUTLINE"
+	E.db["unitframe"]["units"]["party"]["customTexts"]["name1"]["justifyH"] = "LEFT"
+	E.db["unitframe"]["units"]["party"]["customTexts"]["name1"]["size"] = 14
+	E.db["unitframe"]["units"]["party"]["customTexts"]["name1"]["text_format"] = "[name:veryshort] [difficultycolor][smartlevel]"
+	E.db["unitframe"]["units"]["party"]["customTexts"]["name1"]["xOffset"] = 0
+	E.db["unitframe"]["units"]["party"]["customTexts"]["name1"]["yOffset"] = 15
 end

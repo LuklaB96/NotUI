@@ -29,14 +29,28 @@ function NUI:DPSPlayerUnit()
 	E.db["unitframe"]["units"]["player"]["castbar"]["customTimeFont"]["enable"] = true
 	E.db["unitframe"]["units"]["player"]["castbar"]["customTimeFont"]["font"] = "NotUI Font light"
 	E.db["unitframe"]["units"]["player"]["castbar"]["customTimeFont"]["fontSize"] = 15
-	E.db["unitframe"]["units"]["player"]["castbar"]["enable"] = false
 	E.db["unitframe"]["units"]["player"]["castbar"]["height"] = 25
-	E.db["unitframe"]["units"]["player"]["castbar"]["textColor"]["b"] = 0.65098041296005
-	E.db["unitframe"]["units"]["player"]["castbar"]["textColor"]["g"] = 0.74901962280273
-	E.db["unitframe"]["units"]["player"]["castbar"]["textColor"]["r"] = 0.83921575546265
+	E.db["unitframe"]["units"]["player"]["castbar"]["textColor"]["b"] = 1
+	E.db["unitframe"]["units"]["player"]["castbar"]["textColor"]["g"] = 1
+	E.db["unitframe"]["units"]["player"]["castbar"]["textColor"]["r"] = 1
 	E.db["unitframe"]["units"]["player"]["castbar"]["width"] = 290
 	E.db["unitframe"]["units"]["player"]["classbar"]["enable"] = false
 	E.db["unitframe"]["units"]["player"]["colorOverride"] = "FORCE_ON"
+	E.db["unitframe"]["units"]["player"]["debuffs"]["countFont"] = "NotUI Font light"
+	E.db["unitframe"]["units"]["player"]["debuffs"]["enable"] = false
+	E.db["unitframe"]["units"]["player"]["debuffs"]["numrows"] = 4
+	E.db["unitframe"]["units"]["player"]["debuffs"]["perrow"] = 3
+	E.db["unitframe"]["units"]["player"]["debuffs"]["sizeOverride"] = 35
+	E.db["unitframe"]["units"]["player"]["health"]["text_format"] = ""
+	E.db["unitframe"]["units"]["player"]["health"]["xOffset"] = 204
+	E.db["unitframe"]["units"]["player"]["health"]["yOffset"] = -21
+	E.db["unitframe"]["units"]["player"]["height"] = 28
+	E.db["unitframe"]["units"]["player"]["name"]["attachTextTo"] = "Frame"
+	E.db["unitframe"]["units"]["player"]["name"]["xOffset"] = -100
+	E.db["unitframe"]["units"]["player"]["name"]["yOffset"] = 30
+	E.db["unitframe"]["units"]["player"]["power"]["enable"] = false
+	E.db["unitframe"]["units"]["player"]["raidRoleIcons"]["yOffset"] = 11
+	E.db["unitframe"]["units"]["player"]["width"] = 280
 	
 	if E.db["unitframe"]["units"]["player"]["customTexts"] == nil then -- this checks if YourCustomTextName Custom Text exists
 				E.db["unitframe"]["units"]["player"]["customTexts"] = {} -- if not, create its table
@@ -82,19 +96,4 @@ function NUI:DPSPlayerUnit()
 	E.db["unitframe"]["units"]["player"]["customTexts"]["health info"]["text_format"] = "[health:percent] || [health:current:shortvalue]"
 	E.db["unitframe"]["units"]["player"]["customTexts"]["health info"]["xOffset"] = 0
 	E.db["unitframe"]["units"]["player"]["customTexts"]["health info"]["yOffset"] = -23
-	E.db["unitframe"]["units"]["player"]["debuffs"]["countFont"] = "NotUI Font light"
-	E.db["unitframe"]["units"]["player"]["debuffs"]["enable"] = false
-	E.db["unitframe"]["units"]["player"]["debuffs"]["numrows"] = 4
-	E.db["unitframe"]["units"]["player"]["debuffs"]["perrow"] = 3
-	E.db["unitframe"]["units"]["player"]["debuffs"]["sizeOverride"] = 35
-	E.db["unitframe"]["units"]["player"]["health"]["text_format"] = ""
-	E.db["unitframe"]["units"]["player"]["health"]["xOffset"] = 204
-	E.db["unitframe"]["units"]["player"]["health"]["yOffset"] = -21
-	E.db["unitframe"]["units"]["player"]["height"] = 28
-	E.db["unitframe"]["units"]["player"]["name"]["attachTextTo"] = "Frame"
-	E.db["unitframe"]["units"]["player"]["name"]["xOffset"] = -100
-	E.db["unitframe"]["units"]["player"]["name"]["yOffset"] = 30
-	E.db["unitframe"]["units"]["player"]["power"]["enable"] = false
-	E.db["unitframe"]["units"]["player"]["raidRoleIcons"]["yOffset"] = 11
-	E.db["unitframe"]["units"]["player"]["width"] = 280
 end

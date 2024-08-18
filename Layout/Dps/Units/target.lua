@@ -20,10 +20,30 @@ function NUI:DPSTargetUnit()
 	E.db["unitframe"]["units"]["target"]["castbar"]["customTimeFont"]["enable"] = true
 	E.db["unitframe"]["units"]["target"]["castbar"]["customTimeFont"]["font"] = "NotUI Font light"
 	E.db["unitframe"]["units"]["target"]["castbar"]["customTimeFont"]["fontSize"] = 14
-	E.db["unitframe"]["units"]["target"]["castbar"]["icon"] = false
-	E.db["unitframe"]["units"]["target"]["castbar"]["overlayOnFrame"] = "Health"
+	E.db["unitframe"]["units"]["target"]["castbar"]["height"] = 25
+	E.db["unitframe"]["units"]["target"]["castbar"]["textColor"]["b"] = 1
+	E.db["unitframe"]["units"]["target"]["castbar"]["textColor"]["g"] = 1
+	E.db["unitframe"]["units"]["target"]["castbar"]["textColor"]["r"] = 1
 	E.db["unitframe"]["units"]["target"]["castbar"]["width"] = 280
 	E.db["unitframe"]["units"]["target"]["colorOverride"] = "FORCE_ON"
+	E.db["unitframe"]["units"]["target"]["debuffs"]["anchorPoint"] = "TOPLEFT"
+	E.db["unitframe"]["units"]["target"]["debuffs"]["attachTo"] = "FRAME"
+	E.db["unitframe"]["units"]["target"]["debuffs"]["countFont"] = "NotUI Font light"
+	E.db["unitframe"]["units"]["target"]["debuffs"]["growthX"] = "RIGHT"
+	E.db["unitframe"]["units"]["target"]["debuffs"]["numrows"] = 3
+	E.db["unitframe"]["units"]["target"]["debuffs"]["perrow"] = 4
+	E.db["unitframe"]["units"]["target"]["debuffs"]["sizeOverride"] = 25
+	E.db["unitframe"]["units"]["target"]["debuffs"]["spacing"] = 0
+	E.db["unitframe"]["units"]["target"]["debuffs"]["yOffset"] = 10
+	E.db["unitframe"]["units"]["target"]["health"]["text_format"] = ""
+	E.db["unitframe"]["units"]["target"]["height"] = 28
+	E.db["unitframe"]["units"]["target"]["name"]["text_format"] = ""
+	E.db["unitframe"]["units"]["target"]["power"]["attachTextTo"] = "Frame"
+	E.db["unitframe"]["units"]["target"]["power"]["height"] = 5
+	E.db["unitframe"]["units"]["target"]["power"]["strataAndLevel"]["frameLevel"] = 2
+	E.db["unitframe"]["units"]["target"]["power"]["text_format"] = ""
+	E.db["unitframe"]["units"]["target"]["power"]["yOffset"] = 6
+	E.db["unitframe"]["units"]["target"]["width"] = 280
 	
 	if E.db["unitframe"]["units"]["target"]["customTexts"] == nil then -- this checks if YourCustomTextName Custom Text exists
 				E.db["unitframe"]["units"]["target"]["customTexts"] = {} -- if not, create its table
@@ -83,22 +103,4 @@ function NUI:DPSTargetUnit()
 	E.db["unitframe"]["units"]["target"]["customTexts"]["power1"]["text_format"] = "[classpowercolor][power:percent]"
 	E.db["unitframe"]["units"]["target"]["customTexts"]["power1"]["xOffset"] = 0
 	E.db["unitframe"]["units"]["target"]["customTexts"]["power1"]["yOffset"] = -22
-	E.db["unitframe"]["units"]["target"]["debuffs"]["anchorPoint"] = "TOPLEFT"
-	E.db["unitframe"]["units"]["target"]["debuffs"]["attachTo"] = "FRAME"
-	E.db["unitframe"]["units"]["target"]["debuffs"]["countFont"] = "NotUI Font light"
-	E.db["unitframe"]["units"]["target"]["debuffs"]["growthX"] = "RIGHT"
-	E.db["unitframe"]["units"]["target"]["debuffs"]["numrows"] = 3
-	E.db["unitframe"]["units"]["target"]["debuffs"]["perrow"] = 4
-	E.db["unitframe"]["units"]["target"]["debuffs"]["sizeOverride"] = 25
-	E.db["unitframe"]["units"]["target"]["debuffs"]["spacing"] = 0
-	E.db["unitframe"]["units"]["target"]["debuffs"]["yOffset"] = 10
-	E.db["unitframe"]["units"]["target"]["health"]["text_format"] = ""
-	E.db["unitframe"]["units"]["target"]["height"] = 28
-	E.db["unitframe"]["units"]["target"]["name"]["text_format"] = ""
-	E.db["unitframe"]["units"]["target"]["power"]["attachTextTo"] = "Frame"
-	E.db["unitframe"]["units"]["target"]["power"]["height"] = 5
-	E.db["unitframe"]["units"]["target"]["power"]["strataAndLevel"]["frameLevel"] = 2
-	E.db["unitframe"]["units"]["target"]["power"]["text_format"] = ""
-	E.db["unitframe"]["units"]["target"]["power"]["yOffset"] = 6
-	E.db["unitframe"]["units"]["target"]["width"] = 280
 end
